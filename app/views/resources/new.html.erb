@@ -1,0 +1,15 @@
+<form>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <%= simple_form_for @resource do |f| %>
+          <%= f.input :title%>
+          <%= f.input :content, :input_html => {:rows => 10}%>
+          <%= f.button :submit %>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</form>
+
