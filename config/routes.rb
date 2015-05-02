@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'users/show'
+
+  get 'static_pages/home'
+
+  get 'resources/index'
+
+  get 'projects/index'
+
+  get 'jobs/index'
+
+  get 'collaborations/index'
+
+  get 'collaboration/index'
+
   root 'static_pages#home'
 
   # Added our custom 'registrations' controller to Devise in order to allow 'name' for the user
