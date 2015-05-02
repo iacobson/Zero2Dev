@@ -5,6 +5,7 @@
         <%= simple_form_for @resource do |f| %>
           <%= f.input :title%>
           <%= f.input :content, :input_html => {:rows => 10}%>
+          <%= f.input :user_id, :as => :hidden %>
           <%= f.button :submit %>
             <button type="submit" class="btn btn-primary">Submit</button>
           <% end %>
