@@ -17,7 +17,7 @@ class ResourcesController < ApplicationController
   private
 
   def permitted_params
-    params.require(:resource).permit(:title, :content, :user_id) # permit only certain parameters to be inserted into database
+    params.require(:resource).permit(:content, :user_id) # permit only certain parameters to be inserted into database
   end
 
 end

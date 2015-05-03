@@ -3,8 +3,8 @@
 
 <a href=<%= new_resource_path %> class="btn btn-primary">New Post</a><br>
 
-<% @resources.each do |post| %>
-  Posted by: <%= post.user_id ? User.find(post.user_id).name : 'no user' %><br>
-  Title: <%= post.title %><br>
-  Content: <%= post.content %><br><br>
+<% @resources.each do |resource| %>
+  <%= resource.user_id ? User.find(resource.user_id).name : 'no user' %><br>
+  <%= resource.content %><br><br>
+  <%= link_to 'View Full Post', "/resources/#{resource.id}" %>
 <% end %>

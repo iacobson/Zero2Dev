@@ -3,10 +3,9 @@
     <div class="row">
       <div class="col-md-6">
         <%= simple_form_for @resource do |f| %>
-          <%= f.input :title%>
           <%= f.input :content, :input_html => {:rows => 10}%>
           <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-          <%= f.button :submit %>
+          <%= f.button :submit, 'Create New Post' %>
           <% end %>
       </div>
     </div>
