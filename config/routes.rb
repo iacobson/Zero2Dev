@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :jobs
   resources :users, only: [:show]
 
+  get 'dev_login', to: 'users#dev_login'
 end
