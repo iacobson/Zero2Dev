@@ -13,4 +13,9 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
-<a href='/dev_login' class="btn btn-primary">Bypass Login During Development</a><br>
+
+
+<!-- enable auto developer login just for development environment (Bypass Login During Development) -->
+<% if Rails.env.development? %>
+  <a href='/dev_login' class="btn btn-primary">Bypass Login During Development</a><br>
+<% end %>

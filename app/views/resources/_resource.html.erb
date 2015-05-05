@@ -1,5 +1,4 @@
-<% @resources.each do |resource| %>
+
   <%= resource.user_id ? User.find(resource.user_id).name : 'no user' %><br>
   <%= truncate(resource.content, length: 300) %><br>
   <%= link_to 'View Full Post', "/resources/#{resource.id}" %><br><br>
-<% end %>
