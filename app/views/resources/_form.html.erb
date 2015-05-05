@@ -1,5 +1,4 @@
-<%= simple_form_for(@resource) do |f| %>
+<%= simple_form_for @resource do |f| %>
   <%= f.input :content, :input_html => {:rows => 10}%>
-  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-  <%= f.button :submit, 'Create New Post' %>
+  <%= f.button :submit, 'ADD RESOURCE' %>
 <% end %>
