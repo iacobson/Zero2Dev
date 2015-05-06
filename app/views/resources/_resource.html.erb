@@ -1,4 +1,8 @@
 
   <%= resource.user.name %><br>
+  <% if current_user == resource.user %>
+    <%= render 'shared/delete_links', object: resource %>
+  <% end %>
+
   <%= truncate(resource.content, length: 300) %><br>
   <%= link_to 'View Full Post', resource_path(resource) %><br><br>

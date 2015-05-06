@@ -21,6 +21,11 @@ class ResourcesController < ApplicationController
       end
     end
   end
+  def destroy
+    @resource = Resource.find(params[:id])
+    @resource.destroy
+    redirect_to :back
+  end
 
 
   private
