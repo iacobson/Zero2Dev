@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user, only:[:show]
+  
   def show
   end
 
@@ -11,4 +13,10 @@ class UsersController < ApplicationController
       redirect_to :root
     end
   end
+
+  private
+    def set_user
+      # find the user by username (not by ID)
+      @user = User.find(params[:id])
+    end
 end
