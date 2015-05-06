@@ -13,8 +13,6 @@ RSpec.describe UsersController, type: :controller do
       expect(assigns(:user)).to eq(user)
     end
 
-
-
   end
 
 end

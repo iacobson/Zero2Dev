@@ -18,6 +18,8 @@ class ResourcesController < ApplicationController
       if @resource.save
         # if the resource is saved go to resources index with the flash notice "Resource Created"
         format.html{redirect_to resources_path, notice: "Resource created!"}
+      else
+        format.html{render 'new', notice: "Something went wrong, please try again"}
       end
     end
   end
