@@ -1,6 +1,6 @@
 class ResourcesController < ApplicationController
   #users must be authenticated befoe being able to create new posts
-  before_action :authenticate_user!, only:[:new, :create]
+  before_action :authenticate_user!, only:[:new, :create, :destroy]
 
   def index
     @resources = Resource.all
@@ -23,11 +23,14 @@ class ResourcesController < ApplicationController
       end
     end
   end
+
   def destroy
     # authorization here as well as in the view
     @resource = current_user.resources.find(params[:id])
-    @resource.destroy
-    redirect_to :back
+    respond_to do |format|
+      @resource.destroy
+      format.html{redirect_to :back, notice: "Resource deleted!"}
+    end
   end
 
 
