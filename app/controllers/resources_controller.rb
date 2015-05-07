@@ -23,6 +23,12 @@ class ResourcesController < ApplicationController
       end
     end
   end
+  def destroy
+    # authorization here as well as in the view
+    @resource = current_user.resources.find(params[:id])
+    @resource.destroy
+    redirect_to :back
+  end
 
 
   private
