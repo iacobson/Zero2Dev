@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429113446) do
+ActiveRecord::Schema.define(version: 20150510175536) do
 
   create_table "collaborations", force: :cascade do |t|
     t.integer  "user_id"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20150429113446) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "repository"
+    t.string   "website"
   end
 
   create_table "resources", force: :cascade do |t|
