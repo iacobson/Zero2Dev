@@ -1,0 +1,5 @@
+
+	<%= link_to (@resource.user.name), user_path(@resource.user) %>
+	<%= link_to gravatar_for(@resource.user, 125), user_path(@resource.user) %>
+
+	<p><%= @resource.content %></p>
