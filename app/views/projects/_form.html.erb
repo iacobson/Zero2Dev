@@ -22,14 +22,28 @@
                   placeholder: "online repository, such as Github, Bitbuket, etc.", error: false%>
     </div>
     <br>
+
   </div>
 
-  <div class="col-md-8">
-    <%= f.button :submit, 'ADD PROJECT', class: "btn btn-primary btn-block" %>
-  </div>
-  <div class="col-md-4">
-    <%= link_to 'CANCEL', :back, class: "btn btn-danger btn-block" %>
-  </div>
+  <!-- display custom buttons for 'new' and 'show' actions -->
+  <% if action_name == 'new'%>
+    <div class="col-md-8">
+      <%= f.button :submit, 'NEXT  >>  ADD PICTURES', class: "btn btn-primary btn-block" %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to 'CANCEL', :back, class: "btn btn-danger btn-block" %>
+    </div>
+  <%end%>
+
+
+  <% if action_name == 'edit'%>
+    <div class="col-md-8">
+      <%= f.button :submit, 'UPDATE PROJECT', class: "btn btn-primary btn-block" %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to 'DELETE PROJECT', project_path(@project), method: :delete, class: "btn btn-danger btn-block" %>
+    </div>
+  <%end%>
 
 
 <% end %>

@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
 
   belongs_to :user
+  has_many :pictures, dependent: :destroy
 
   validates_presence_of :user_id, :content, :title
   # validates that website and repository fields are URLs
