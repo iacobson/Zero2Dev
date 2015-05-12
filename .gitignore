@@ -17,5 +17,6 @@
 /tmp
 
 # Ignore pictures uploaded in tests
-/public/uploads/picture/image/*.jpg
-/public/uploads/tmp/*.jpg
+/public/uploads/picture/image/*
+/public/uploads/tmp/*
+/public/system/pictures/images/*
