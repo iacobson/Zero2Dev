@@ -1,0 +1,15 @@
+<%= simple_form_for @picture, html: { multipart: true }, remote: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="col-md-6">
+    <%= f.input :image, label: false, accept: 'image/jpeg,image/gif,image/png' %>
+    <%= f.hidden_field :project_id, value: post.id %>
+  </div>
+  <div class="col-md-6">
+    <% if post.pictures.first == nil%>
+      <%= f.button :submit, 'ADD IMAGE', class: "btn btn-xs" %>
+    <%else%>
+      <%= f.button :submit, 'ADD ANOTHER IMAGE', class: "btn btn-xs" %>
+    <%end%>
+  </div>
+
+<%end%>

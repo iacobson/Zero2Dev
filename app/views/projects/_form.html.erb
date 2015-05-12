@@ -1,0 +1,49 @@
+
+<%= simple_form_for @project do |f| %>
+  <div class="col-md-12">
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.input :title, required: true, autofocus: true, label: false, placeholder: "project title"%>
+    <%= f.input :content, :input_html => {:rows => 6}, required: true,
+                label: false, placeholder: "project description"%>
+
+
+    <div class="input-group">
+      <span class="input-group-addon">
+        <%= fa_icon "link", class: "fa-fw text-muted" %>
+      </span>
+      <%= f.input :website, as: :url, label: false, placeholder: "project website", error: false%>
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <%= fa_icon "link", class: "fa-fw text-muted" %>
+      </span>
+      <%= f.input :repository, as: :url, label: false,
+                  placeholder: "online repository, such as Github, Bitbuket, etc.", error: false%>
+    </div>
+    <br>
+
+  </div>
+
+  <!-- display custom buttons for 'new' and 'show' actions -->
+  <% if action_name == 'new'%>
+    <div class="col-md-8">
+      <%= f.button :submit, 'NEXT  >>  ADD PICTURES', class: "btn btn-primary btn-block" %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to 'CANCEL', :back, class: "btn btn-danger btn-block" %>
+    </div>
+  <%end%>
+
+
+  <% if action_name == 'edit'%>
+    <div class="col-md-8">
+      <%= f.button :submit, 'UPDATE PROJECT', class: "btn btn-primary btn-block" %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to 'DELETE PROJECT', project_path(@project), method: :delete, class: "btn btn-danger btn-block" %>
+    </div>
+  <%end%>
+
+
+<% end %>

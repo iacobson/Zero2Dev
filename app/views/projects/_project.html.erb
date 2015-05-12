@@ -1,0 +1,38 @@
+<div class="col-md-4" id="<%= dom_id(project) %>">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <div class=" img-thumbnail">
+            <%= link_to user_path(project.user) do%>
+              <%= gravatar_for(project.user, 30) %>
+              <br>
+              <small ><%= project.user.name.to_s.first(10)%></small>
+            <%end%>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <h3 class="panel-title"><%=link_to project.title, project_path(project)%></h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+      <!-- 'project_thumbnails' method defined in Project Model -->
+        <% project.project_thumbnails.each do |picture| %>
+          <div class="col-md-4 text-center">
+            <div class="thumbnail">
+              <%= link_to project_path(project) do %>
+                <%= image_tag picture.image.url %>
+              <%end%>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+
+  </div>
+
+</div>

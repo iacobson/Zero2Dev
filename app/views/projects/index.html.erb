@@ -1,2 +1,7 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<div class="row">
+  <%= link_to "ADD NEW PROJECT", new_project_path, class:"btn btn-primary btn-block"%>
+</div>
+<br>
+<div class="row">
+  <%= render @projects%>
+</div>

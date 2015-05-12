@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :collaborations
   resources :jobs
+  resources :pictures, only: [:create, :destroy]
 
   get 'dev_login', to: 'users#dev_login'
 end

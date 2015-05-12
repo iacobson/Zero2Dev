@@ -1,0 +1,10 @@
+<div class="col-md-4" id="<%= dom_id(picture) %>">
+  <div class="thumbnail">
+    <%= image_tag picture.image.url %>
+    <div class="caption text-center">
+      <%= link_to "DELETE", picture_path(picture), method: :delete,
+            remote: true, class: "btn btn-danger btn-xs btn-block"%>
+
+    </div>
+  </div>
+</div>
