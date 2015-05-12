@@ -58,7 +58,9 @@ group :development, :test do
   # Testing with RSpec
   gem 'rspec-rails'
 
-  gem 'dotenv-rails'
+  gem "better_errors" #better error messages
+  gem "binding_of_caller"
+  gem 'did_you_mean' #suggestions for misspells
 end
 
 group :test do
