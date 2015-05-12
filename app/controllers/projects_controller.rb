@@ -28,6 +28,10 @@ class ProjectsController < ApplicationController
 
   end
 
+  def show
+    @pictures = @project.pictures
+  end
+
   def edit
     @picture = Picture.new
     @pictures = Picture.where(project: @project)

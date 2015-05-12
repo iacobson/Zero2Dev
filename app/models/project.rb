@@ -15,4 +15,9 @@ class Project < ActiveRecord::Base
   # sort the resources descending. The last will be at the top of the list
   default_scope -> { order(created_at: :desc) }
 
+  # to be used in projects index
+  def project_thumbnails
+    self.pictures.first(3)
+  end
+
 end

@@ -1,6 +1,6 @@
 <%= simple_form_for @picture, html: { multipart: true }, remote: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <div class="col-md-6">
-    <%= render 'shared/error_messages', object: f.object %>
     <%= f.input :image, label: false, accept: 'image/jpeg,image/gif,image/png' %>
     <%= f.hidden_field :project_id, value: post.id %>
   </div>
