@@ -2,19 +2,21 @@ class ProjectsController < ApplicationController
   #users must be authenticated befoe being able to create new posts
   before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
   before_action :set_project, only:[:show, :edit, :update, :destroy]
-  before_action :authorized_user, only:[:edit, :update, :destroy]
+  #cancan authorization method. Authorizations set in app/models/ability.rb
+  load_and_authorize_resource through: :current_user, except: [:index, :show]
 
   def index
     @projects = Project.all
   end
 
   def new
-    @project = Project.new
+    @project = Project.new(user_id: current_user.id)
 
   end
 
   def create
     @project = current_user.projects.build(project_params)
+
 
     # respond_to will be useful in the future if we will add ajax actions
     respond_to do |format|
@@ -30,6 +32,7 @@ class ProjectsController < ApplicationController
 
   def show
     @pictures = @project.pictures
+
   end
 
   def edit
@@ -66,11 +69,5 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     end
 
-    # actions that can be performed only by the curren_user
-    def authorized_user
-      if @project.user != current_user
-        redirect_to root_path, notice: "You are not authorized to perform this action"
-      end
-    end
 
 end

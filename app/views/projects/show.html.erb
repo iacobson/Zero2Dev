@@ -13,7 +13,8 @@
         </div>
       </div>
     </div>
-    <% if current_user == @project.user%>
+    <!-- 'can?' is a cancan method. Checking if the current user is authorized to perform that action -->
+    <% if can? :manage, @project%>
       <div class="col-md-5">
         <div class="pull-right">
           <%= link_to "EDIT", edit_project_path(@project), class: "btn btn-xs btn-warning"%>

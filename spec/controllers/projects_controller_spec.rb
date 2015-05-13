@@ -18,10 +18,10 @@ RSpec.describe ProjectsController, type: :controller do
       expect(response).to redirect_to(new_user_session_path)
     end
 
-    it "creates resource if user is logged-in" do
+    it "creates project if user is logged-in" do
       sign_in user
       post :create, project: {title: "First Project", content: "Neque porro quisquam est qui dolorem ipsum"}
-      expect(response).to redirect_to(projects_path)
+      expect(response).to redirect_to(edit_project_path(Project.first))
       expect(assigns(:project).content).to eq(Project.first.content)
     end
 
@@ -31,6 +31,12 @@ RSpec.describe ProjectsController, type: :controller do
       expect(response).to render_template(:new)
       expect(assigns(:project)).to be_present
     end
+  end
+
+  describe "GET #edit" do
+    let(:user1) {User.create!(name:"John", email:"john@mail.com", password:"password")}
+    let(:user2) {User.create!(name:"Mary", email:"mary@mail.com", password:"password")}
+
   end
 
 end

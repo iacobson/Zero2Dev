@@ -5,8 +5,8 @@ $(document).on 'page:change', ->
       alert "Maximum file size is 5MB. Please choose a smaller file"
 
 
-
 $(document).on 'page:change', ->
+
   $(".bxslider").bxSlider({
     pagerCustom: '#bx-pager'
   })

@@ -34,6 +34,7 @@ gem 'mini_magick'# image resize
 gem 'fog' # cloud storage (Amazon S3)
 gem 'remotipart' # upload files via javascript
 gem 'bxslider-rails' #pictures slideshow
+gem 'cancancan' #handling authorizations (this is the community maintained version of cancan gem)
 
 
 # Use ActiveModel has_secure_password
