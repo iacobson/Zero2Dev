@@ -10,6 +10,3 @@ if Rails.env.production?
     config.fog_directory     =  ENV['S3_BUCKET']
   end
 end
-
-#AKIAJQFE5VJRPIHMPBLA
-#TZDJclPGZRwgCQJzgPttPDcfvtkxi6sqX+cesZCx
