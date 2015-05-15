@@ -1,0 +1,16 @@
+<!-- using bxslider gem for slider -->
+<ul class="bxslider">
+  <% @pictures.each do |picture|%>
+    <li><%= image_tag picture.image.url %></li>
+  <%end%>
+</ul>
+
+<div id="bx-pager">
+  <% @pictures.each_with_index do |picture, index|%>
+    <div class="col-md-3">
+      <div class="thumbnail">
+        <a data-slide-index="<%= index %>" href="" class=><%= image_tag picture.image.url %></a>
+      </div>
+    </div>
+  <%end%>
+</div>

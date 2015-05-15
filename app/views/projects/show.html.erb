@@ -31,6 +31,7 @@
   <br>
 
   <div class="row">
+    <!-- project content -->
     <div class="col-md-6">
       <p><%= @project.content%></p>
       <hr>
@@ -44,23 +45,9 @@
       </h4>
 
     </div>
-    <div class="col-md-6">
-      <!-- using bxslider gem for slider -->
-      <ul class="bxslider">
-        <% @pictures.each do |picture|%>
-          <li><%= image_tag picture.image.url %></li>
-        <%end%>
-      </ul>
-
-      <div id="bx-pager">
-        <% @pictures.each_with_index do |picture, index|%>
-          <div class="col-md-3">
-            <div class="thumbnail">
-              <a data-slide-index="<%= index %>" href="" class=><%= image_tag picture.image.url %></a>
-            </div>
-          </div>
-        <%end%>
-      </div>
+    <!-- project pictures slider -->
+    <div class="col-md-6 projects_slider_show">
+      <%= render 'projects_slider'%>
     </div>
   </div>
 
