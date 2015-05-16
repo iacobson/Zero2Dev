@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :collaborations
   resources :jobs
   resources :pictures, only: [:create, :destroy]
+  resources :contact_forms, only: [:new, :create]
 
   get 'dev_login', to: 'users#dev_login'
 end

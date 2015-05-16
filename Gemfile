@@ -35,6 +35,7 @@ gem 'fog' # cloud storage (Amazon S3)
 gem 'remotipart' # upload files via javascript
 gem 'bxslider-rails' #pictures slideshow
 gem 'cancancan' #handling authorizations (this is the community maintained version of cancan gem)
+gem 'mail_form' #handling contact forms
 
 
 # Use ActiveModel has_secure_password
