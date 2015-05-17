@@ -28,6 +28,7 @@ gem 'autoprefixer-rails'    # adds browsers prefixes to css
 gem 'font-awesome-rails'    # only if you need more icons
 gem 'simple_form'   # always install when working with forms
 gem 'devise' # user management
+gem 'factory_girl_rails'
 
 gem 'carrierwave' #handling attachments
 gem 'mini_magick'# image resize

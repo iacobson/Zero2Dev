@@ -11,7 +11,7 @@ RSpec.describe ResourcesController, type: :controller do
   end
 
   describe "POST #create" do
-    let(:user) {User.create!(name:"John", email:"john@mail.com", password:"password")}
+    let(:user) {FactoryGirl.create(:user)}
 
     it "redirects to login if guest" do
       post :create, resource: {content: "Neque porro quisquam est qui dolorem ipsum"}
@@ -34,14 +34,13 @@ RSpec.describe ResourcesController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    let(:user1) {User.create!(name:"John", email:"john@mail.com", password:"password")}
-    let(:user2) {User.create!(name:"Mary", email:"mary@mail.com", password:"password")}
-    let(:resource){user1.resources.create!(content: "Neque porro quisquam est qui dolorem ipsum")}
+    let(:user1) {FactoryGirl.create(:user)}
+    let(:user2) {FactoryGirl.create(:user)}
+    let(:resource){FactoryGirl.create(:resource, user: user1)}
 
 
     it "deletes resource when user1 (that created the resource) is logged-in" do
-      sign_in user1
-      # request env should be specified if the controller action is redirecting back.
+      sign_in user1      # request env should be specified if the controller action is redirecting back.
       request.env["HTTP_REFERER"] = "/resources"
       delete :destroy, id: resource.id
       expect(Resource.find_by(id: resource.id)).to be_nil
