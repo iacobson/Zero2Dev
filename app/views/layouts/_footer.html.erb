@@ -1,0 +1,37 @@
+
+
+<ul class="nav nav-pills">
+
+  <li role="presentation"><a href="https://github.com/iacobson/Zero2Dev" target="_blank" class="text-center"> <span><%= fa_icon "github-square", class: " text-muted" %></span> Github</a> </li>
+  <li role="presentation" class="dropup">
+    <a class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-expanded="false">
+      <span><%= fa_icon "trello", class: " text-muted" %></span> Trello <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <li class="dropdown-submenu"><a href="https://trello.com/b/zr7hcd3i/concept" target="_blank">Project Concept</a></li>
+      <li class="dropdown-submenu"><a href="https://trello.com/b/0e8L5AGQ/tasks" target="_blank">Tasks Management</a></li>
+      <li class="divider"></li>
+      <li class="dropdown-submenu">
+        <%= link_to new_contact_form_path do %>
+          <span><%= fa_icon "envelope-o", class: " text-muted" %></span>  Get Invitation
+        <%end%>
+      </li>
+    </ul>
+  </li>
+
+  <li role="presentation" class="dropup">
+    <a class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-expanded="false">
+      <span><%= fa_icon "slack", class: " text-muted" %></span> Slack <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <li class="dropdown-submenu"><a href="https://zero2dev.slack.com/" target="_blank">Project Chat</a></li>
+      <li class="divider"></li>
+      <li class="dropdown-submenu">
+        <%= link_to new_contact_form_path do %>
+          <span><%= fa_icon "envelope-o", class: " text-muted" %></span>  Get Invitation
+        <%end%>
+      </li>
+    </ul>
+  </li>
+
+</ul>
