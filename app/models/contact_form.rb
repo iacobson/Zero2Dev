@@ -20,7 +20,12 @@ class ContactForm < MailForm::Base
     case choice
     when "contribute"
       return "contribute to project development"
-
+    when "feature"
+      return "suggest new feature"
+    when "bug"
+      return "report a bug"
+    when "feedback"
+      return "give feedback"
     end
   end
 
