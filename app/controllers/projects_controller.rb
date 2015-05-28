@@ -30,10 +30,6 @@ class ProjectsController < ApplicationController
 
   def show
     @pictures = @project.pictures
-    respond_to do |format|
-      format.html # show.html.erb
-      format.js # show.js.erb
-    end
   end
 
   def edit
