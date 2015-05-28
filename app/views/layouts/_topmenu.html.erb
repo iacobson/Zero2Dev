@@ -15,10 +15,13 @@
     <div class="collapse navbar-collapse" id="top-menu">
       <%= link_to "Contribute", new_contact_form_path, class: "btn btn-success btn-xs navbar-btn navbar-left" %>
       <ul class="nav navbar-nav">
-        <li><%= link_to "LEARN", resources_path %></li>
-        <li><%= link_to "DEVELOP", projects_path %></li>
-        <li><%= link_to "COLLABORATE", collaborations_path %></li>
-        <li><%= link_to "GET HIRED", jobs_path %></li>
+        <li>&nbsp &nbsp</li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li class=<%="active" if controller_name == "resources"%>><%= link_to "LEARN", resources_path %></li>
+        <li class=<%="active" if controller_name == "projects"%>><%= link_to "DEVELOP", projects_path %></li>
+        <li class=<%="active" if controller_name == "collaborations"%>><%= link_to "COLLABORATE", collaborations_path %></li>
+        <li class=<%="active" if controller_name == "jobs"%>><%= link_to "GET HIRED", jobs_path %></li>
 
       </ul>
 
