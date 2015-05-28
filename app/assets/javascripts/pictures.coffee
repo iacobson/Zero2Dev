@@ -7,7 +7,9 @@ $(document).on 'page:change', ->
       $('#picture_image').val('')
 
 # $(document).ready as the slider needs to load only once. With $(document).on 'page:change' , will result in duplication of the slider
-$(document).ready ->
-  $(".bxslider").bxSlider({
-    pagerCustom: '#bx-pager'
-  })
+
+# $(document).on 'page:change', ->
+#
+#   $(".bxslider").bxSlider({
+#     pagerCustom: '#bx-pager'
+#   })

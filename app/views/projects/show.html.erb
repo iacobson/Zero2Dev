@@ -47,7 +47,12 @@
     </div>
     <!-- project pictures slider -->
     <div class="col-md-6 projects_slider_show">
-      <%= render 'projects_slider'%>
+    <%= render 'projects_slider' %>
+    <!-- moved the slider javascript from asste pipeline to view partial as it was doubling on page back/forward actions -->
+    <script type="text/javascript">
+      <%= render 'slider_javascript.coffee' %>
+    </script>
+
     </div>
   </div>
 

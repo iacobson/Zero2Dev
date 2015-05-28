@@ -11,7 +11,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new(user_id: current_user.id)
-
   end
 
   def create
@@ -27,12 +26,14 @@ class ProjectsController < ApplicationController
         format.html{render 'new', notice: "Something went wrong, please try again"}
       end
     end
-
   end
 
   def show
     @pictures = @project.pictures
-
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js # show.js.erb
+    end
   end
 
   def edit
