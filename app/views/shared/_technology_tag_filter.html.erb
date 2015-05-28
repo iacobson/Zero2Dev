@@ -1,0 +1,25 @@
+<!-- DRY for technology tag filter to be reused in all kind of posts index (resources, projects, collaborations, jobs)
+whenever you need it use it like this:
+= render 'shared/technology_tag_filter'  -->
+
+
+<!-- url_for controller, in order to be reutilized for all controllers (instead of _path)
+it is redirecting to the current controller index -->
+<%= form_tag url_for( controller: controller_name, action: "index" ), method: :get do %>
+  <% @technologies.each do |t| %>
+
+    <div class="checkbox_wrapper checkbox-inline text-muted text-center">
+
+      <!-- very imporant!!! the "technology[]" tells rails that must output an array, not the last value
+      technology is passed as param -->
+      <!-- @selected_technology.include?(t) will keep checkboxes selected -->
+      <%= check_box_tag("technology[]", t, @selected_technology.include?(t), class: "checkbox") %>
+      <%= t %>
+
+    </div>
+
+  <%end%>
+
+  <br>
+  <%= submit_tag 'Filter' %>
+<%end%>

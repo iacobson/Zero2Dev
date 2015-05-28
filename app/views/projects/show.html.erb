@@ -7,7 +7,7 @@
     <div class="col-md-2">
       <div class="text-center">
         <div class=" img-thumbnail">
-          <%= link_to user_path(@project.user) do%>
+          <%= link_to user_path(@project.user) do %>
             <%= gravatar_for(@project.user, 60) %>
           <%end%>
         </div>
@@ -42,7 +42,16 @@
         <br>
         <%= fa_icon "github", class: "fa-fw text-muted pull-left" %>
         <%= link_to @project.repository, @project.repository %>
+        <br>
+        <br>
+        <!-- display project techologies using shared partial -->
+        <%= fa_icon "code", class: "fa-fw text-muted pull-left" %>
+        built with:
+        <%= render 'shared/technology_list', post: @project %>
       </h4>
+
+
+
 
     </div>
     <!-- project pictures slider -->

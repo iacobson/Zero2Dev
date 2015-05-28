@@ -6,7 +6,21 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource through: :current_user, except: [:index, :show]
 
   def index
-    @projects = Project.all
+    # select all technologies tags for Project Model, and maps them to array
+    # request done with 'squeel' gem
+    @technologies = ActsAsTaggableOn::Tagging.includes(:tag).where{(taggable_type == "Project") & (context == 'technologies')}.map{|tagging| tagging.tag.name}.uniq
+
+    # display only projects tagged with specific technology (acts_as_taggable_on method)
+    if params[:technology]
+      # keep the persistence of selected checkboxes
+      @selected_technology = params[:technology]
+      # 'any: true' - if more checkboxes selected, will return all matching results for each
+      @projects = Project.tagged_with(params[:technology], any: true)
+    else
+      @projects = Project.all
+      #empty array not to return error on index page
+      @selected_technology=[]
+    end
   end
 
   def new
@@ -38,7 +52,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-
     respond_to do |format|
       if @project.update(project_params)
         format.html{redirect_to project_path(@project)}
@@ -46,20 +59,17 @@ class ProjectsController < ApplicationController
         format.html{render 'edit', notice: "Something went wrong, please try again"}
       end
     end
-
   end
 
   def destroy
-
     @project.destroy
     redirect_to projects_path, notice: "Project Deleted"
-
   end
 
   private
 
     def project_params
-      params.require(:project).permit(:title, :content, :repository, :website, :user_id) # permit only certain parameters to be inserted into database
+      params.require(:project).permit(:title, :content, :repository, :website, :user_id, :technology_list) # permit only certain parameters to be inserted into database
     end
 
     def set_project

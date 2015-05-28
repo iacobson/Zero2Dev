@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :pictures
 
+  # method from acts_as_taggable_on. The user is the tagger
+  acts_as_tagger
+
 end

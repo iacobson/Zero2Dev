@@ -2,16 +2,19 @@
 <%= simple_form_for @project do |f| %>
   <div class="col-md-12">
     <%= render 'shared/error_messages', object: f.object %>
-    <%= f.input :title, required: true, autofocus: true, label: false, placeholder: "project title"%>
+    <%= f.input :title, required: true, autofocus: true, label: false, placeholder: "project title" %>
     <%= f.input :content, :input_html => {:rows => 6}, required: true,
                 label: false, placeholder: "project description"%>
-
+    <%= f.input :technology_list,
+                input_html: {value: @project.technology_list.to_s},  
+                required: true, label: false,
+                placeholder: "techologies utilized" %>
 
     <div class="input-group">
       <span class="input-group-addon">
         <%= fa_icon "link", class: "fa-fw text-muted" %>
       </span>
-      <%= f.input :website, as: :url, label: false, placeholder: "project website", error: false%>
+      <%= f.input :website, as: :url, label: false, placeholder: "project website", error: false %>
     </div>
     <br>
     <div class="input-group">
@@ -19,7 +22,7 @@
         <%= fa_icon "link", class: "fa-fw text-muted" %>
       </span>
       <%= f.input :repository, as: :url, label: false,
-                  placeholder: "online repository, such as Github, Bitbuket, etc.", error: false%>
+                  placeholder: "online repository, such as Github, Bitbuket, etc.", error: false %>
     </div>
     <br>
 
