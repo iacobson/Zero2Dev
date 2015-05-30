@@ -14,8 +14,11 @@
       </div>
     </div>
     <!-- 'can?' is a cancan method. Checking if the current user is authorized to perform that action -->
-    <% if can? :manage, @project%>
-      <div class="col-md-5">
+    <div class="col-md-5">
+
+      
+      <% if can? :manage, @project%>
+
         <div class="row">
 
           <div class="col-xs-3 pull-right">
@@ -27,8 +30,9 @@
           </div>
 
         </div>
-      </div>
-    <%end%>
+      <%end%>
+    </div>
+
   </div>
   <div class="row">
     <div class="text-center">

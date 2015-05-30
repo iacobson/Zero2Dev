@@ -8,25 +8,16 @@ whenever you need it use it like this:
         <!-- button used by jQuery to slide down the tags -->
         <div class='row'>
           <!-- set_name_link method defined in application_helper -->
-          <% if controller_name == "projects" || controller_name == "collaborations"%>
-            <div class="col-sm-<%=set_name_link[:col]%>">
-              <%= link_to set_name_link[:name1], set_name_link[:link1], class:"btn btn-xs btn-primary btn-block"%>
-            </div>
-          <!-- resources and jobs will have 2 buttons: for posts and questions -->
-          <%else%>
-            <div class="col-sm-<%=set_name_link[:col]%>">
-              <%= link_to set_name_link[:name1], set_name_link[:link1], class:"btn btn-xs btn-primary btn-block"%>
-            </div>
-            <div class="col-sm-<%=set_name_link[:col]%>">
-              <%= link_to set_name_link[:name2], set_name_link[:link2], class:"btn btn-xs btn-primary btn-block"%>
-            </div>
-          <%end%>
 
-          <div class="col-sm-<%=set_name_link[:col]%>">
+          <div class="col-sm-4">
+            <%= link_to set_name_link[:name_new], set_name_link[:link_new], class:"btn btn-xs btn-primary btn-block"%>
+          </div>
+
+          <div class="col-sm-4">
             <button type="button" class="btn btn-xs btn-info btn-block show_tag_filters">FILTER BY TECHNOLOGY</button>
           </div>
 
-          <div class="col-sm-<%=set_name_link[:col]%>">
+          <div class="col-sm-4">
             <%= link_to "CLEAR FILTERS", url_for( controller: controller_name, action: "index" ), method: :get,
                                                   class: "btn btn-xs btn-warning btn-block" %>
           </div>
@@ -41,7 +32,7 @@ whenever you need it use it like this:
           <% all_technologies_list_for_type.each do |t| %>
 
             <div class="checkbox_wrapper checkbox-inline text-muted text-center">
-
+              
               <!-- very imporant!!! the "technology[]" tells rails that must output an array, not the last value
               technology is passed as param -->
               <!-- @selected_technology.include?(t) will keep checkboxes selected -->
