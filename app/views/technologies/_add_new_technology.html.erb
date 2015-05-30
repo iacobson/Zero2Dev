@@ -1,0 +1,19 @@
+<!-- DRY for addnin new technologies tags to be reused in all forms for (resources, projects, collaborations, jobs)
+Usage:
+= render 'technologies/add_new_technology', post: @xxxxx-->
+
+
+<div class="col-md-12">
+  <br>
+  <div class="well">
+    <h4>Add new technology tag</h4>
+    <small class="text-muted">*in order to avoid duplications and confusions, please check carefuly if the technology is not already added in the list above</small>
+    <%= form_tag(technologies_path(post_id: post.id, post_type: controller_name), remote: true) do %>
+      <!-- technology is passed as an array, to create multiple tags -->
+      <%= text_field_tag :technology, nil, placeholder: "new technology tag",
+                          class: 'form-control new_technology_input', required: true %>
+      <%= submit_tag 'ADD TECHNOLOGY', class: "btn btn-block btn-xs btn-success" %>
+    <%end%>
+  </div>
+
+</div>

@@ -16,9 +16,16 @@
     <!-- 'can?' is a cancan method. Checking if the current user is authorized to perform that action -->
     <% if can? :manage, @project%>
       <div class="col-md-5">
-        <div class="pull-right">
-          <%= link_to "EDIT", edit_project_path(@project), class: "btn btn-xs btn-warning"%>
-          <%= link_to "DELETE", project_path(@project), method: :delete, class: "btn btn-xs btn-danger"%>
+        <div class="row">
+
+          <div class="col-xs-3 pull-right">
+            <%= link_to "DELETE", project_path(@project), method: :delete, class: "btn btn-xs btn-danger btn-block"%>
+          </div>
+
+          <div class="col-xs-3 pull-right">
+            <%= link_to "EDIT", edit_project_path(@project), class: "btn btn-xs btn-warning btn-block"%>
+          </div>
+
         </div>
       </div>
     <%end%>
@@ -36,22 +43,24 @@
       <p><%= @project.content%></p>
       <hr>
       <h4>
-        <%= fa_icon "home", class: "fa-fw text-muted pull-left" %>
-        <%= link_to @project.website, @project.website %>
-        <br>
-        <br>
-        <%= fa_icon "github", class: "fa-fw text-muted pull-left" %>
-        <%= link_to @project.repository, @project.repository %>
-        <br>
-        <br>
-        <!-- display project techologies using shared partial -->
-        <%= fa_icon "code", class: "fa-fw text-muted pull-left" %>
-        built with:
-        <%= render 'shared/technology_list', post: @project %>
+        <%if @project.website.size > 0%>
+          <%= fa_icon "home", class: "fa-fw text-muted pull-left" %>
+          <%= link_to @project.website, @project.website %>
+          <br>
+          <br>
+        <%end%>
+        <%if @project.repository.size > 0%>
+          <%= fa_icon "github", class: "fa-fw text-muted pull-left" %>
+          <%= link_to @project.repository, @project.repository %>
+          <br>
+          <br>
+        <%end%>
+        <%if @project.technologies.size > 0%>
+          <!-- display project techologies using shared partial -->
+          <%= fa_icon "code", class: "fa-fw text-muted pull-left" %>
+          <%= render 'technologies/technology_list', post: @project %>
+        <%end%>
       </h4>
-
-
-
 
     </div>
     <!-- project pictures slider -->

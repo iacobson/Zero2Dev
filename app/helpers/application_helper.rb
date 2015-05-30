@@ -15,5 +15,28 @@ module ApplicationHelper
     end
   end
 
+  # select all technologies tags for all Models
+  def all_technologies_list
+    ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'technologies').map{|tagging| tagging.tag.name}.uniq
+  end
+
+  # select all technologies tags for each Model type, and maps them to array
+  # request done with 'squeel' gem
+  def all_technologies_list_for_type
+    case controller_name
+      when "resources"
+        @model = "Resource"
+      when "projects"
+        @model = "Project"
+      when "collaborations"
+        @model = "Collaboration"
+      when "jobs"
+        @model = "Job"
+    end
+    #need local variable for squeel to work
+    model = @model
+    ActsAsTaggableOn::Tagging.includes(:tag).where{(taggable_type == model) & (context == 'technologies')}.map{|tagging| tagging.tag.name}.uniq
+  end
+
 
 end

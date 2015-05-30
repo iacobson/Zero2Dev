@@ -6,10 +6,6 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource through: :current_user, except: [:index, :show]
 
   def index
-    # select all technologies tags for Project Model, and maps them to array
-    # request done with 'squeel' gem
-    @technologies = ActsAsTaggableOn::Tagging.includes(:tag).where{(taggable_type == "Project") & (context == 'technologies')}.map{|tagging| tagging.tag.name}.uniq
-
     # display only projects tagged with specific technology (acts_as_taggable_on method)
     if params[:technology]
       # keep the persistence of selected checkboxes
@@ -69,7 +65,8 @@ class ProjectsController < ApplicationController
   private
 
     def project_params
-      params.require(:project).permit(:title, :content, :repository, :website, :user_id, :technology_list) # permit only certain parameters to be inserted into database
+      # allow technology_list to pass an array to the params
+      params.require(:project).permit(:title, :content, :repository, :website, :user_id, technology_list:[])
     end
 
     def set_project

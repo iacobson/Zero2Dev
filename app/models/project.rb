@@ -22,4 +22,5 @@ class Project < ActiveRecord::Base
     self.pictures.first(3)
   end
 
+
 end

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :jobs
   resources :pictures, only: [:create, :destroy]
   resources :contact_forms, only: [:new, :create]
+  resources :technologies, only: [:create]
 
   get 'dev_login', to: 'users#dev_login'
 end

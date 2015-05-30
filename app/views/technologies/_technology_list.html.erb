@@ -1,9 +1,11 @@
 <!-- DRY for technology list to be reused in all kind of posts (resources, projects, collaborations, jobs)
 whenever you need it use it like this:
-= render 'shared/technology_list', post: @xxxxx  -->
+= render 'technologies/technology_list', post: @xxxxx  -->
 
 <!-- link_to controller, in order to be reutilized for all controllers (instead of _path)
 it is redirecting to the current controller index -->
 <% post.technology_list.each do |p| %>
-<%= link_to p, {controller: controller_name, technology: p }, {class: "btn btn-xs btn-default"} %>
+
+    <%= link_to p, {controller: controller_name, technology: p }, {class: "label label-default"} %>
+
 <%end%>

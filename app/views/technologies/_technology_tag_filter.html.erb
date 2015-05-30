@@ -1,6 +1,6 @@
 <!-- DRY for technology tag filter to be reused in all kind of posts index (resources, projects, collaborations, jobs)
 whenever you need it use it like this:
-= render 'shared/technology_tag_filter'  -->
+= render 'technologies/technology_tag_filter'  -->
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-default tags_wrapper">
@@ -10,25 +10,25 @@ whenever you need it use it like this:
           <!-- set_name_link method defined in application_helper -->
           <% if controller_name == "projects" || controller_name == "collaborations"%>
             <div class="col-sm-<%=set_name_link[:col]%>">
-              <%= link_to set_name_link[:name1], set_name_link[:link1], class:"btn btn-sm btn-primary btn-block"%>
+              <%= link_to set_name_link[:name1], set_name_link[:link1], class:"btn btn-xs btn-primary btn-block"%>
             </div>
           <!-- resources and jobs will have 2 buttons: for posts and questions -->
           <%else%>
             <div class="col-sm-<%=set_name_link[:col]%>">
-              <%= link_to set_name_link[:name1], set_name_link[:link1], class:"btn btn-sm btn-primary btn-block"%>
+              <%= link_to set_name_link[:name1], set_name_link[:link1], class:"btn btn-xs btn-primary btn-block"%>
             </div>
             <div class="col-sm-<%=set_name_link[:col]%>">
-              <%= link_to set_name_link[:name2], set_name_link[:link2], class:"btn btn-sm btn-primary btn-block"%>
+              <%= link_to set_name_link[:name2], set_name_link[:link2], class:"btn btn-xs btn-primary btn-block"%>
             </div>
           <%end%>
 
           <div class="col-sm-<%=set_name_link[:col]%>">
-            <button type="button" class="btn btn-sm btn-info btn-block show_tag_filters">FILTER BY TECHNOLOGY</button>
+            <button type="button" class="btn btn-xs btn-info btn-block show_tag_filters">FILTER BY TECHNOLOGY</button>
           </div>
 
           <div class="col-sm-<%=set_name_link[:col]%>">
-            <%= link_to "CLEAR FILTERS", url_for( controller: controller_name, action: "index" ),
-                                                  class: "btn btn-sm btn-warning btn-block" %>
+            <%= link_to "CLEAR FILTERS", url_for( controller: controller_name, action: "index" ), method: :get,
+                                                  class: "btn btn-xs btn-warning btn-block" %>
           </div>
         </div>
       </div>
@@ -37,7 +37,8 @@ whenever you need it use it like this:
         <!-- url_for controller, in order to be reutilized for all controllers (instead of _path)
         it is redirecting to the current controller index -->
         <%= form_tag url_for( controller: controller_name, action: "index" ), method: :get do %>
-          <% @technologies.each do |t| %>
+          <!-- all_technologies_list method defined in application_helper -->
+          <% all_technologies_list_for_type.each do |t| %>
 
             <div class="checkbox_wrapper checkbox-inline text-muted text-center">
 
@@ -53,7 +54,7 @@ whenever you need it use it like this:
       </div>
 
       <div class="panel-footer">
-        <%= submit_tag 'APPLY FILTERS', class: "btn btn-block btn-sm text-muted" %>
+        <%= submit_tag 'APPLY FILTERS', class: "btn btn-block btn-xs btn-success" %>
         <%end%>
 
       </div>

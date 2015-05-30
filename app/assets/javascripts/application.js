@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require chosen-jquery
 //= require jquery.remotipart
 //= require bxslider
 //= require bootstrap-sprockets

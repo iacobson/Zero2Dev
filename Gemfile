@@ -37,7 +37,9 @@ gem 'remotipart' # upload files via javascript
 gem 'bxslider-rails' #pictures slideshow
 gem 'cancancan' #handling authorizations (this is the community maintained version of cancan gem)
 gem 'mail_form' #handling contact forms
-gem 'acts-as-taggable-on', '~> 3.4' # add technology tags to all articles  
+gem 'acts-as-taggable-on', '~> 3.4' # add technology tags to all articles
+gem 'chosen-rails' # chose tags from lists
+gem "compass-rails", github: "Compass/compass-rails", branch: "master" #needed for 'chosen-rails' until new version release
 
 
 # Use ActiveModel has_secure_password
