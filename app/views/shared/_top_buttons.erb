@@ -1,0 +1,82 @@
+
+<div class="panel panel-default tags_wrapper">
+  <div class="panel-heading">
+    <div class="row">
+
+      <!-- INDEX ACTION -->
+      <% if action_name == 'index' %>
+        <div class="col-sm-4">
+          <%= render 'shared/buttons/new'%>
+        </div>
+        <div class="col-sm-4">
+          <!-- url_for controller, in order to be reutilized for all controllers (instead of _path)
+          it is redirecting to the current controller index -->
+          <%= form_tag url_for( controller: controller_name, action: "index" ), method: :get do %>
+            <!-- all_technologies_list method defined in application_helper -->
+            <!-- very imporant!!! the "technology_list[]" tells rails that must output an array, not the last value
+            technology is passed as param -->
+
+            <%= select_tag  "technology_list[]",
+                            options_for_select(all_technologies_list_for_type,
+                                selected: params[:technology_list]),
+                            class: 'chosen-select',
+                            multiple: :true,
+                            label: false,
+                            data:{placeholder: "FILTER BY TECHNOLOGY"},
+                            :onchange => "this.form.submit();"%>
+          <%end%>
+        </div>
+        <div class="col-sm-4">
+          <%= link_to "CLEAR FILTERS", url_for( controller: controller_name, action: "index" ), method: :get,
+                                                class: "btn btn-sm btn-warning btn-block" %>
+        </div>
+
+
+      <!-- SHOW ACTION -->
+      <% elsif action_name == 'show' %>
+        <% if can? :manage, @project%>
+          <div class="col-sm-4">
+            <%= render 'shared/buttons/new'%>
+          </div>
+          <div class="col-sm-4">
+            <%= link_to "EDIT", url_for(controller: controller_name, action: "edit"),
+                method: :get, class: "btn btn-sm btn-warning btn-block"%>
+          </div>
+          <div class="col-sm-4">
+            <%= render 'shared/buttons/delete'%>
+          </div>
+        <%else%>
+          <div class="col-sm-12">
+            <%= render 'shared/buttons/new'%>
+          </div>
+        <%end%>
+
+      <!-- EDIT ACTION -->
+      <% elsif action_name == 'edit' %>
+        <div class="col-sm-4">
+          <%= render 'shared/buttons/new'%>
+        </div>
+        <div class="col-sm-4">
+          <%= link_to "CANCEL", url_for(controller: controller_name, action: "show"),
+            method: :get, class: "btn btn-sm btn-warning btn-block"%>
+        </div>
+        <div class="col-sm-4">
+          <%= render 'shared/buttons/delete'%>
+        </div>
+
+
+      <!-- NEW ACTION -->
+      <% elsif action_name == 'new' %>
+        <div class="col-sm-12">
+          <%= link_to "CANCEL", url_for(controller: controller_name, action: "index"),
+              method: :get, class: "btn btn-sm btn-warning btn-block"%>
+        </div>
+
+
+      <% end %>
+
+
+
+    </div>
+  </div>
+</div>

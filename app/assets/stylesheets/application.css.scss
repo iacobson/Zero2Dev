@@ -45,14 +45,12 @@ footer {
 
 .hidden { display: none; }
 
-// format technology filter checkboxes
-.checkbox_wrapper {
-  background-color: #f5f5f5;
-  padding: 5px 20px 5px 40px;
-  margin-bottom: 10px;
-}
+
 
 // format labels
 .label {
   font-weight: normal;
 }
+
+// "chosen" tags field customization
+li.search-field input {width: 150px !important;}

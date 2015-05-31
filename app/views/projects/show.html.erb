@@ -1,4 +1,6 @@
-<br>
+
+<%= render 'shared/top_buttons'%>
+
 <div class="well">
   <div class="row">
     <div class="col-md-5">
@@ -16,21 +18,7 @@
     <!-- 'can?' is a cancan method. Checking if the current user is authorized to perform that action -->
     <div class="col-md-5">
 
-      
-      <% if can? :manage, @project%>
 
-        <div class="row">
-
-          <div class="col-xs-3 pull-right">
-            <%= link_to "DELETE", project_path(@project), method: :delete, class: "btn btn-xs btn-danger btn-block"%>
-          </div>
-
-          <div class="col-xs-3 pull-right">
-            <%= link_to "EDIT", edit_project_path(@project), class: "btn btn-xs btn-warning btn-block"%>
-          </div>
-
-        </div>
-      <%end%>
     </div>
 
   </div>
@@ -59,12 +47,13 @@
           <br>
           <br>
         <%end%>
-        <%if @project.technologies.size > 0%>
-          <!-- display project techologies using shared partial -->
-          <%= fa_icon "code", class: "fa-fw text-muted pull-left" %>
-          <%= render 'technologies/technology_list', post: @project %>
-        <%end%>
       </h4>
+      <%if @project.technologies.size > 0%>
+        <h4><%= fa_icon "code", class: "fa-fw text-muted pull-left" %></h4>
+        <!-- display project techologies using shared partial -->
+        <span><%= render 'technologies/technology_list', post: @project %></span>
+      <%end%>
+
 
     </div>
     <!-- project pictures slider -->

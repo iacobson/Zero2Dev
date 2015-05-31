@@ -7,11 +7,13 @@ class ProjectsController < ApplicationController
 
   def index
     # display only projects tagged with specific technology (acts_as_taggable_on method)
-    if params[:technology]
+    if params[:technology_list]
       # keep the persistence of selected checkboxes
-      @selected_technology = params[:technology]
+      @selected_technology = params[:technology_list]
+      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      puts @selected_technology
       # 'any: true' - if more checkboxes selected, will return all matching results for each
-      @projects = Project.tagged_with(params[:technology], any: true)
+      @projects = Project.tagged_with(params[:technology_list], any: true)
     else
       @projects = Project.all
       #empty array not to return error on index page
