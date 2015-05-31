@@ -5,7 +5,6 @@ class TechnologiesController < ApplicationController
     case params[:post_type]
     when "resources"
       @post = Resource.find(params[:post_id])
-
     when "projects"
       @post = Project.find(params[:post_id])
     when "collaborations"
@@ -19,6 +18,7 @@ class TechnologiesController < ApplicationController
     @post.technology_list.add(@technology, parse: true)
     respond_to do |format|
       if @post.save
+        @current_post = Project.find(params[:post_id])
         format.html {redirect_to :back}
         format.js
 

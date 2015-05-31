@@ -20,11 +20,10 @@
                     placeholder: "online repository, such as Github, Bitbuket, etc.", error: false %>
       </div>
       <br>
-      <%= f.input :technology_list,
-                  # all_technologies_list method is defined in application_helper
-                  collection: all_technologies_list,
-                  input_html: {class: 'chosen-select form-control', multiple: :true, data:{placeholder: "technologies utilized"}},
-                  label: false %>
+        <!-- render field from partial so it can be accessed through jQuery -->
+        <div class="technology_field">
+          <%= render 'technologies/technology_field', f: f%>
+        </div>
     </div>
 
     <!-- display custom buttons for 'new' and 'show' actions -->
