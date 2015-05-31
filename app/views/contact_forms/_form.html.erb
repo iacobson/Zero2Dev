@@ -1,40 +1,48 @@
 <%= simple_form_for @contact_form do |f| %>
-  <div class='col-md-3 well'>
 
-    <div class='col-xs-12'>
+
+
+  <div class='col-md-6 well'>
+    <div class="row">
+    <div class='col-xs-6'>
       <div class="text-primary text-center">
         <h1>GET INVOLVED</h1>
         <br>
       </div>
     </div>
-    <%= f.input :choice,
-                collection: [['contribute', 'contribute to the project'],['feature', 'suggest new feature'], ['bug', 'report a bug'], ['feedback', 'give feedback']],
-                value_method: :first,
-                label_method: :last,
-                label: false,
-                as: :radio_buttons,
-                item_wrapper_class: 'radio text-primary',
-                item_wrapper_tag: 'div',
-                checked: 'contribute'%>
+    <div class='col-xs-6'>
+      <%= f.input :choice,
+                  collection: [['contribute', 'contribute to the project'],['feature', 'suggest new feature'], ['bug', 'report a bug'], ['feedback', 'give feedback']],
+                  value_method: :first,
+                  label_method: :last,
+                  label: false,
+                  as: :radio_buttons,
+                  item_wrapper_class: 'radio text-primary',
+                  item_wrapper_tag: 'div',
+                  checked: 'contribute'%>
+
+    </div>
+    </div>
+
+    <br>
 
 
-  </div>
-  <div class='col-md-4'>
+
+
     <%= f.input :name, label: false, placeholder: "name",  required: true %>
-    <div class='well'>
-      <%= f.input :email, label: false, placeholder: "eg: name@example.com", required: true %>
-      <!-- the text for contact_form_mail and contact_form_message will be added with jQuery (contact_forms.coffee) -->
-      <div class="contact_form_mail text-muted text-justify">
-        <small>please input your e-mail you are using for Trello and Slack in order to receive your invitations</small>
-      </div>
+
+    <!-- the text for contact_form_mail and contact_form_message will be added with jQuery (contact_forms.coffee) -->
+    <div class="contact_form_mail text-muted text-justify">
+      <small>Your e-mail used for Trello and Slack in order to receive your invitations:</small>
+    </div>
+    <%= f.input :email, label: false, placeholder: "eg: name@example.com", required: true %>
+
+    <div class="contact_form_message text-muted text-justify">
+      <small>Information about your interests, skills, or areas where you would like to contribute:</small>
     </div>
 
-    <div class='well'>
-      <%= f.input :message, label: false, placeholder: "your message", as: :text, input_html: {rows: 5}, required: true %>
-      <div class="contact_form_message text-muted text-justify">
-        <small>any information about your motivation, interests, skills or areas you would like to contribute to the project</small>
-      </div>
-    </div>
+    <%= f.input :message, label: false, placeholder: "your message", as: :text, input_html: {rows: 3}, required: true %>
+
 
     <!-- this div will be hidden and will act as anti-spam
     details here : https://github.com/plataformatec/mail_form -->
@@ -43,7 +51,7 @@
     </div>
 
 
-    <%= f.button :submit, 'Request Invitation', class: "btn btn-primary btn-block", id: "contact_submit_button"  %>
+    <%= f.button :submit, 'Request Invitation', class: "btn btn-sm btn-success btn-block", id: "contact_submit_button"  %>
   </div>
 
 <% end %>
