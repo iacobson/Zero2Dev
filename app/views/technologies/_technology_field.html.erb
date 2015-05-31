@@ -1,0 +1,5 @@
+<%= f.input :technology_list,
+            # all_technologies_list method is defined in application_helper
+            collection: all_technologies_list,
+            input_html: {class: 'chosen-select form-control', multiple: :true, data:{placeholder: "technologies utilized"}},
+            label: false %>

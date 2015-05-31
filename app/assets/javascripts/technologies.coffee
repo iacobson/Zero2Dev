@@ -5,7 +5,7 @@
 
 
 #initiate Chosen Gem
-$(document).on 'page:change', ->
+$(document).ready ->
   $('.chosen-select').chosen
     allow_single_deselect: true
     no_results_text: 'Oops! No result!'
