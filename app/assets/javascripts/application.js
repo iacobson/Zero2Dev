@@ -16,5 +16,6 @@
 //= require jquery.remotipart
 //= require bxslider
 //= require bootstrap-sprockets
+//= require bootstrap-markdown-bundle
 //= require turbolinks
 //= require_tree .

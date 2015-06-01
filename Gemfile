@@ -40,7 +40,7 @@ gem 'mail_form' #handling contact forms
 gem 'acts-as-taggable-on', '~> 3.4' # add technology tags to all articles
 gem 'chosen-rails' # chose tags from lists
 gem "compass-rails", github: "Compass/compass-rails", branch: "master" #needed for 'chosen-rails' until new version release
-
+gem 'rails-bootstrap-markdown'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

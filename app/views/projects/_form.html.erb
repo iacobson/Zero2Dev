@@ -3,7 +3,7 @@
     <div class="col-md-12"%>
       <%= render 'shared/error_messages', object: f.object %>
       <%= f.input :title, required: true, autofocus: true, label: false, placeholder: "project title" %>
-      <%= f.input :content, :input_html => {:rows => 6}, required: true,
+      <%= f.input :content, :input_html => {:rows => 6, data:{provide: "markdown"}, class: "markdown_input_field"}, required: true,
                   label: false, placeholder: "project description"%>
       <div class="input-group">
         <span class="input-group-addon">
