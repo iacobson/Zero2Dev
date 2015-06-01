@@ -51,7 +51,9 @@ class ProjectsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @project.update(project_params)
+      if @project.technology_list.size == 0 && @project.update(project_params)
+        format.html{redirect_to :back, notice: "Please add the project technologies tags"}
+      elsif @project.update(project_params)
         format.html{redirect_to project_path(@project)}
       else
         format.html{render 'edit', notice: "Something went wrong, please try again"}

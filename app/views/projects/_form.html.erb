@@ -1,15 +1,14 @@
 <div class="row">
+  <!-- data-provide: "markdown" is requested by bootstrap-markdown to input markdown -->
   <%= simple_form_for @project, html: {data:{provide: "markdown"}} do |f| %>
     <div class="col-md-12"%>
       <%= render 'shared/error_messages', object: f.object %>
       <%= f.input :title, required: true, autofocus: true, label: false, placeholder: "project title" %>
-      <div class="">
 
-      </div>
       <%= f.input :content,
-                  :input_html => {:rows => 6, class: "markdown_input_field"},
+                  :input_html => {:rows => 8, class: "markdown_input_field"},
                   required: true,
-                  label: false, placeholder: "project description"%>
+                  label: false, placeholder: "project description (markdown accepted)"%>
 
       <div class="input-group">
         <span class="input-group-addon">
@@ -26,10 +25,12 @@
                     placeholder: "online repository, such as Github, Bitbuket, etc.", error: false %>
       </div>
       <br>
-        <!-- render field from partial so it can be accessed through jQuery -->
-        <div class="technology_field">
-          <%= render 'technologies/technology_field', f: f%>
-        </div>
+        <% if action_name == 'edit'%>
+          <!-- render field from partial so it can be accessed through jQuery -->
+          <div class="technology_field">
+            <%= render 'technologies/technology_field', f: f%>
+          </div>
+        <%end%>
     </div>
 
     <!-- display custom buttons for 'new' and 'show' actions -->
@@ -49,7 +50,9 @@
   <% end %>
 </div>
 
-<!-- add new technology through shared partial that can be used with all type of posts -->
-<div class="row">
-  <%= render 'technologies/add_new_technology', post:@project %>
-</div>
+<% if action_name == 'edit'%>
+  <!-- add new technology through shared partial that can be used with all type of posts -->
+  <div class="row">
+    <%= render 'technologies/add_new_technology', post:@project %>
+  </div>
+<%end%>

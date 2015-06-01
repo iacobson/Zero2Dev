@@ -32,7 +32,8 @@
   <div class="row">
     <!-- project content -->
     <div class="col-md-6">
-      <p><%= @project.content%></p>
+      <!-- convert_to_markdown method in application_helper -->
+      <p><%= convert_to_markdown(@project.content) %></p>
       <hr>
       <h4>
         <%if @project.website.size > 0%>
