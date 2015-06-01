@@ -1,10 +1,16 @@
 <div class="row">
-  <%= simple_form_for @project do |f| %>
+  <%= simple_form_for @project, html: {data:{provide: "markdown"}} do |f| %>
     <div class="col-md-12"%>
       <%= render 'shared/error_messages', object: f.object %>
       <%= f.input :title, required: true, autofocus: true, label: false, placeholder: "project title" %>
-      <%= f.input :content, :input_html => {:rows => 6, data:{provide: "markdown"}, class: "markdown_input_field"}, required: true,
+      <div class="">
+
+      </div>
+      <%= f.input :content,
+                  :input_html => {:rows => 6, class: "markdown_input_field"},
+                  required: true,
                   label: false, placeholder: "project description"%>
+
       <div class="input-group">
         <span class="input-group-addon">
           <%= fa_icon "link", class: "fa-fw text-muted" %>

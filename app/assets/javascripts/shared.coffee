@@ -1,4 +1,3 @@
 $(document).on 'page:change', ->
-  $("#some-textarea").markdown
+  $(".markdown_input_field").markdown
     iconlibrary:"fa"
-    savable:true
