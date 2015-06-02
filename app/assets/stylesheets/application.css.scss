@@ -54,3 +54,10 @@ footer {
 
 // "chosen" tags field customization
 li.search-field input {width: 150px !important;}
+
+// set content preview height
+//.content_preview {max-height: 100px }
+
+.content_preview{
+  max-height: 100px;
+  overflow: hidden;}

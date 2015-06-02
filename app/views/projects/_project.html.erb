@@ -1,42 +1,63 @@
-<div class="col-md-4" id="<%= dom_id(project) %>">
+<!-- assign each div an ID -->
+<div class="col-xs-12" id="<%= dom_id(project) %>">
+
+
+
+
   <div class="panel panel-default">
+
+
 
     <div class="panel-heading">
       <div class="row">
-        <div class="col-md-4 text-center">
-          <div class=" img-thumbnail">
-            <%= link_to user_path(project.user) do %>
-              <%= gravatar_for(project.user, 30) %>
-              <br>
-              <small ><%= project.user.name.to_s.first(10)%></small>
-            <%end%>
-          </div>
+
+        <div class=" col-md-4">
+          <small class='text-center text-muted'><%= link_to project.user.name, user_path(project.user)%> <%= time_ago_in_words(project.created_at) %> ago</small>
+          <h3 class=""><%=link_to project.title, project_path(project)%></h3>
         </div>
+
         <div class="col-md-8">
-          <h3 class="panel-title"><%=link_to project.title, project_path(project)%></h3>
+          <!-- 'project_thumbnails' method defined in Project Model -->
+          <% project.project_thumbnails.each do |picture| %>
+
+              <div class="img-thumbnail pull-right" >
+                <%= link_to project_path(project) do %>
+                  <%= image_tag picture.image.url, height: "80px" %>
+                <%end%>
+              </div>
+          <%end%>
         </div>
+
       </div>
     </div>
 
     <div class="panel-body">
       <div class="row">
-      <!-- 'project_thumbnails' method defined in Project Model -->
-        <% project.project_thumbnails.each do |picture| %>
-          <div class="col-md-4 text-center">
-            <div class="thumbnail">
-              <%= link_to project_path(project) do %>
-                <%= image_tag picture.image.url %>
-              <%end%>
-            </div>
+
+          <div class="col-xs-1">
+              <div class="thumbnail">
+                <%= link_to user_path(project.user) do %>
+                  <%= gravatar_for(project.user, 60) %>
+                <%end%>
+              </div>
           </div>
-        <%end%>
+
+          <div class="col-xs-11 content_preview">
+            <%= convert_to_markdown(project.content) %>
+          </div>
+          <div class="col-xs-11 pull-right">
+            <%= link_to "VIEW PROJECT", project_path(project), class: "btn btn-block btn-xs btn-primary"%>
+          </div>
+
+
       </div>
     </div>
 
     <div class="panel-footer">
       <%= render 'technologies/technology_list', post: project %>
     </div>
-
   </div>
+
+
 
 </div>

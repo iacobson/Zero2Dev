@@ -8,7 +8,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
     # limit the max size to 800 px
-    process resize_to_limit: [800, 800]
+    process resize_to_limit: [800, 400]
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?

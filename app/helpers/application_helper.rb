@@ -47,11 +47,18 @@ module ApplicationHelper
   # Code highlight with 'coderay' gem
   class AddCodeRay < Redcarpet::Render::HTML
     def block_code(code, language)
-      CodeRay.scan(code, language).div
+      #apply CodeRay only if you provide language, otherwise will result in error
+      if code && language
+        CodeRay.scan(code, language).div
+      else
+        return "no language"
+
+      end
     end
   end
 
   def convert_to_markdown(content)
+
     coderay = AddCodeRay.new( :filter_html => true,
                               :hard_wrap => true)
     options = {
@@ -64,8 +71,16 @@ module ApplicationHelper
       tables: true,
       no_intra_emphasis: true
     }
+
     markdown_to_html ||= Redcarpet::Markdown.new(coderay, options)
+    # if code not provided, skip coderay
+    if markdown_to_html.render(content) == "no language"
+      markdown_to_html = Redcarpet::Markdown.new(Redcarpet::Render::HTML, options)
+    end
     markdown_to_html.render(content).html_safe
+
+
+
   end
 
 

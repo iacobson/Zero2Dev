@@ -1,74 +1,73 @@
 
 <%= render 'shared/top_buttons'%>
 
-<div class="well">
-  <div class="row">
-    <div class="col-md-5">
-      <h3 class="pull-right"><%= link_to @project.user.name, user_path(@project.user)%></h3>
-    </div>
-    <div class="col-md-2">
-      <div class="text-center">
-        <div class=" img-thumbnail">
-          <%= link_to user_path(@project.user) do %>
-            <%= gravatar_for(@project.user, 60) %>
-          <%end%>
-        </div>
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-12">
+        <small class='text-center text-muted'><%= link_to @project.user.name, user_path(@project.user)%> <%= time_ago_in_words(@project.created_at) %> ago</small>
       </div>
-    </div>
-    <!-- 'can?' is a cancan method. Checking if the current user is authorized to perform that action -->
-    <div class="col-md-5">
 
+      <div class="col-xs-2">
+        <h3>
+          <div class="thumbnail">
+            <%= link_to user_path(@project.user) do %>
+              <%= gravatar_for(@project.user, 80) %>
+            <%end%>
+            <%= link_to "FOLLOW", "#", class:"btn btn-xs btn-block btn-info text-center"%>
+          </div>
+        </h3>
+      </div>
 
-    </div>
-
-  </div>
-  <div class="row">
-    <div class="text-center">
-      <h3><%= @project.title%></h3>
-    </div>
-  </div>
-  <br>
-
-  <div class="row">
-    <!-- project content -->
-    <div class="col-md-6">
-      <!-- convert_to_markdown method in application_helper -->
-      <p><%= convert_to_markdown(@project.content) %></p>
-      <hr>
-      <h4>
-        <%if @project.website.size > 0%>
-          <%= fa_icon "home", class: "fa-fw text-muted pull-left" %>
-          <%= link_to @project.website, @project.website %>
-          <br>
-          <br>
+      <div class="col-xs-10">
+        <h3 class=""><%= @project.title%></h3>
+        <h4>
+          <%if @project.website.size > 0%>
+            <%= fa_icon "home", class: "fa-fw text-muted pull-left" %>
+            <%= link_to @project.website, @project.website %>
+            <br>
+            <br>
+          <%end%>
+          <%if @project.repository.size > 0%>
+            <%= fa_icon "github", class: "fa-fw text-muted pull-left" %>
+            <%= link_to @project.repository, @project.repository %>
+            <br>
+            <br>
+          <%end%>
+        </h4>
+        <%if @project.technologies.size > 0%>
+          <h4><%= fa_icon "code", class: "fa-fw text-muted pull-left" %></h4>
+          <!-- display project techologies using shared partial -->
+          <span><%= render 'technologies/technology_list', post: @project %></span>
         <%end%>
-        <%if @project.repository.size > 0%>
-          <%= fa_icon "github", class: "fa-fw text-muted pull-left" %>
-          <%= link_to @project.repository, @project.repository %>
-          <br>
-          <br>
-        <%end%>
-      </h4>
-      <%if @project.technologies.size > 0%>
-        <h4><%= fa_icon "code", class: "fa-fw text-muted pull-left" %></h4>
-        <!-- display project techologies using shared partial -->
-        <span><%= render 'technologies/technology_list', post: @project %></span>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <div class="col-md-7">
+      <%= convert_to_markdown(@project.content) %>
+    </div>
+
+    <div class="col-md-5 projects_slider_show">
+      <%if @pictures.size > 0%>
+        <%= render 'projects_slider' %>
+        <!-- moved the slider javascript from asste pipeline to view partial as it was doubling on page back/forward actions -->
+        <script type="text/javascript">
+          <%= render 'slider_javascript.coffee' %>
+        </script>
       <%end%>
-
-
     </div>
-    <!-- project pictures slider -->
-    <div class="col-md-6 projects_slider_show">
-    <%= render 'projects_slider' %>
-    <!-- moved the slider javascript from asste pipeline to view partial as it was doubling on page back/forward actions -->
-    <script type="text/javascript">
-      <%= render 'slider_javascript.coffee' %>
-    </script>
 
-    </div>
+
+
   </div>
 
-
-
+  <div class="panel-footer">
+  </div>
 
 </div>

@@ -10,8 +10,6 @@ class ProjectsController < ApplicationController
     if params[:technology_list]
       # keep the persistence of selected checkboxes
       @selected_technology = params[:technology_list]
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      puts @selected_technology
       # 'any: true' - if more checkboxes selected, will return all matching results for each
       @projects = Project.tagged_with(params[:technology_list], any: true)
     else
