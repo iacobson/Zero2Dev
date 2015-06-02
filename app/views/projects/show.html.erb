@@ -6,7 +6,7 @@
   <div class="panel-heading">
     <div class="row">
       <div class="col-xs-12">
-        <small class='text-center text-muted'><%= link_to @project.user.name, user_path(@project.user)%> <%= time_ago_in_words(@project.created_at) %> ago</small>
+        <small class='text-center text-muted'>by <%= link_to @project.user.name, user_path(@project.user)%>, <%= time_ago_in_words(@project.updated_at) %> ago</small>
       </div>
 
       <div class="col-xs-2">

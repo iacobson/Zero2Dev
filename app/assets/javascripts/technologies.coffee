@@ -4,7 +4,7 @@
 
 
 
-#initiate Chosen Gem
+#initiate 'Chosen' Gem
 $(document).on 'page:change', ->
   $('.chosen-select').chosen
     allow_single_deselect: true

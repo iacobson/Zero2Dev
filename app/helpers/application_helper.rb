@@ -48,12 +48,9 @@ module ApplicationHelper
   class AddCodeRay < Redcarpet::Render::HTML
     def block_code(code, language)
       #apply CodeRay only if you provide language, otherwise will result in error
-      if code && language
-        CodeRay.scan(code, language).div
-      else
-        return "no language"
+      language ||= "default"
+      CodeRay.scan(code, language).div
 
-      end
     end
   end
 
@@ -73,14 +70,7 @@ module ApplicationHelper
     }
 
     markdown_to_html ||= Redcarpet::Markdown.new(coderay, options)
-    # if code not provided, skip coderay
-    if markdown_to_html.render(content) == "no language"
-      markdown_to_html = Redcarpet::Markdown.new(Redcarpet::Render::HTML, options)
-    end
     markdown_to_html.render(content).html_safe
-
-
-
   end
 
 
